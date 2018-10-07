@@ -1,0 +1,16 @@
+{
+  "name": "pubg_mixer",
+  "version": "1.0.0",
+  "description": "Mixer Bot Pubg Tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BlackSnow",
+  "license": "ISC",
+  "dependencies": {
+    "@mixer/client-node": "^3.0.0",
+    "request": "^2.88.0",
+    "ws": "^6.0.0"
+  }
+}
