@@ -1,9 +1,10 @@
 
 const token   = process.env.BOT_TOKEN;
+const SERVER_UL  = process.env.SERVER;
 const botrun  = "Bonjour je suis le bot de statistique qui va permettre de savoir vos stats sur pubg";
 const helper  = "Écrivez !stats gamertag-platforme-region ( ex: !stats malcolm908-xbox-eu ).";
 const helper2 = "Si votre pseudo mixer est le même que le compte xbox alors écrivez simplement !stats platforme-region ( ex: !stats xbox-eu ).";
-const promo   = "Télechargez la nouvelle application mobile qui vous permetera de voir vos stats et ceux de vos amis https://play.google.com/store/apps/details?id=com.ultimecode.pubgtracker";
+const promo   = "Télechargez la nouvelle application mobile qui vous permetera de voir vos stats et ceux de vos amis https://play.google.com/store/apps/details?id=com.ultimecode.pubgsocialtrackerapp";
 const Mixer   = require('@mixer/client-node');
 const ws      = require('ws');
 var request   = require("request");
@@ -13,7 +14,7 @@ const client = new Mixer.Client(new Mixer.DefaultRequestRunner());
 
 console.log("+============================+")
 console.log("    Bot Mixer Pubg Stats")
-console.log("      By X SKydr0w X")
+console.log("      By X BLACKSNOW X")
 console.log("+============================+")
 
 client.use(new Mixer.OAuthProvider(client, {
@@ -81,16 +82,16 @@ function createChatSocket (userId, channelId, endpoints, authkey) {
               //console.log("new_gamertag: "+new_gamertag);
             //  console.log("platfornm: "+platfornm);
             //  console.log("region: "+region);
-              var url = 'https://www.ultimecode.com/pubg/index.php?action=assets&objectif=newuser&playername='+new_gamertag+'&plateform='+platforme+'-'+region;
+              var url = 'https://www.'+SERVER_UL+'.com/pubg/index.php?action=assets&objectif=newuser&playername='+new_gamertag+'&plateform='+platforme+'-'+region;
             }else{
               socket.call('msg', [`Je télecharge les statistiques de ` +gamertag+ ` veuillez patienter ...`]);
-              var url = 'https://www.ultimecode.com/pubg/index.php?action=assets&objectif=newuser&playername='+gamertag+'&plateform='+platforme+'-'+region;
+              var url = 'https://www.'+SERVER_UL+'.com/pubg/index.php?action=assets&objectif=newuser&playername='+gamertag+'&plateform='+platforme+'-'+region;
             }
 
           //  console.log("url: "+url);
             if( gamertag=="" || platforme=="" || region==""){socket.call('msg', ["Mince je n'ai rien trouvé, le gamertag contient-il des majuscules peut-être, ou est-ce la bonne platforme-region ?"]);}else{
 
-          //  var url = 'https://www.ultimecode.com/pubg/index.php?action=assets&objectif=newuser&playername='+gamertag+'&plateform='+platforme+'-'+region;
+
             request({
                 url: url,
                 json: true
